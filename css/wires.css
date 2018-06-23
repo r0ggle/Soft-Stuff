@@ -1,0 +1,25 @@
+/*
+	wires.css, 23.jun.2018, Ruairi Gann
+
+	Written for softstuff.uk,
+	this css file highlights elements and displays their limits, for development use only.
+*/
+
+* {
+outline: 1px dotted rgba(0,0,0,.2);
+}
+body {
+background-color: rgb(250, 255, 0, .2);
+}
+	#wrapper {
+	background-color: rgba(194, 124, 255, .2)
+	}
+		#wrapper > * {
+		background-color: #ffffff;
+		}
+a {
+background-color: rgba(0, 0, 238,.2);
+}
+a:active {
+background-color: rgba(238,0,0,.2);
+}

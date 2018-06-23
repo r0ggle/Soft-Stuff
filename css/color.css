@@ -1,0 +1,16 @@
+/*
+	color.css, 23.jun.2018, Ruairi Gann
+
+	Written for softstuff.uk,
+	this css file is used to define which colors and images should be used.
+
+	Properties:
+	background-color, color, list-style-image
+*/
+
+body{
+color: rgb(102, 94, 85);
+}
+h1>a {
+color: inherit;
+}

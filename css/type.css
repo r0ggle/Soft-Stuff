@@ -1,0 +1,25 @@
+/*
+	type.css, 23.jun.2018, Ruairi Gann
+
+	Written for softstuff.uk,
+	this css file is used to define rules regarding typography,
+	and rendering text within elements.
+
+	Properties:
+	font-family, font-size, line-height, list-style-type, text-decoration,
+*/
+
+body {
+/*font-family: 'Heebo', sans-serif;*/
+font-family: 'Sriracha', cursive;
+}
+p {
+line-height: 1.6;
+font-size: 16px;
+}
+h1 > a {
+text-decoration: none;
+}
+nav > ul {
+list-style-type: none;
+}

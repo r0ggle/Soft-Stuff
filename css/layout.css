@@ -1,0 +1,67 @@
+/*
+	layout.css, 23.jun.2018, Ruairi Gann
+
+	Written for softstuff.uk,
+	this css file is used to define rules of composition and dynamic layout.
+	Rules set before the @media queries are to be used across all devices,
+	rules which change depending on screen width are defined inside the @media queries.
+
+	Properties:
+	border, display, height, grid-template-rows, list-style-position, margin, max-width, outline, padding, position, right, top, width
+*/
+
+body {
+margin: 0;
+}
+	#wrapper {
+	position: absolute;
+	display: grid;
+	grid-template-rows: 40px auto 40px;
+	height: 100%;
+	}
+		#wrapper > * {
+		display: flex;
+		}
+			#wrapper > header > h1 {
+			font-size: 20px;
+			margin-top: 0;
+			margin-bottom: 0;
+			}
+			#wrapper > main {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			}
+p {
+margin: 0;
+}
+img {
+max-width: 100%;
+height: auto;
+}
+
+
+ /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {...}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+	#wrapper {
+	grid-template-rows: 80px auto 80px;
+	width: 76%;
+	margin: 0 7% 0 7%;
+	padding: 0 5% 0 5%;
+	}
+		#wrapper > header > h1 {
+		font-size: 40px;
+		}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {...}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}
