@@ -29,7 +29,7 @@ margin: 0;
 			}
 			#wrapper > main {
 			display: grid;
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: 3fr 1fr;
 			}
 p {
 margin: 0;
@@ -37,6 +37,9 @@ margin: 0;
 img {
 max-width: 100%;
 height: auto;
+}
+ul {
+padding-left: 20px;
 }
 
 
