@@ -15,7 +15,7 @@
 	
 	var score = 0;
 	var high = 0;
-	var output = t.$("rps-result");
+	var output = T.$("rps-result");
 
 	/*
 		playRPS function takes a choice, makes a choice and calculates a winner.
@@ -76,9 +76,6 @@
 		var message;
 		var result = playRPS(input);
 
-		console.log("input: " + input);
-		console.log("result: " + result);
-
 		if (result !== 0) {
 			if (result === 1) { // user win
 				++score;
@@ -102,12 +99,13 @@
 
 	window.onload = function()
 	{
-		t.addEvent(t.$("rps-rock"), "click", function(e) {
+		T.addEvent(T.$("rps-rock"), "click", function(e) {
 			handleClick("rock");
 		});
-		t.addEvent(t.$("rps-paper"), "click", function(e) {
+		T.addEvent(T.$("rps-paper"), "click", function(e) {
 			handleClick("paper");
-		});t.addEvent(t.$("rps-scissors"), "click", function(e) {
+		});
+		T.addEvent(T.$("rps-scissors"), "click", function(e) {
 			handleClick("scissors");
 		});
 	}

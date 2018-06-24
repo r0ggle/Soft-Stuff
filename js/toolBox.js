@@ -6,7 +6,7 @@
 		these functions return undefined.
 */
 
-var t = {
+var T = {
 
 	/*
 		$ function acts as a shortcut for document.getElementById().
@@ -80,4 +80,4 @@ var t = {
 		}
 	} // End of removeEvent function.
 
-}; // End of t.
+}; // End of T.
