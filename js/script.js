@@ -1,10 +1,8 @@
 window.onload = function()
 {
-	'use strict';
-
-	var title = (document.getElementById('head-title').textContent) ?
-	document.getElementById('head-title').textContent :
-	document.getElementById('head-title').innerText;
-	
+	"use strict";
+	var title = (t.$('head-title').textContent) ?
+	t.$('head-title').textContent :
+	t.$('head-title').innerText;
 	console.log('window loaded: ' + title);
 };

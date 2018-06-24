@@ -27,8 +27,19 @@
 			</nav>-->
 		</header>
 		<main>
-			<div>
-				<p>I thought I should do more stuff with software.<br>This is a website where you can see, hear, interact with that stuff etc.</p>
+			<div id="rps-container">
+				<span id="rps-result">
+					Make your choice...
+					<ul>
+						<li>Score:</li>
+						<li>High:</li>
+					</ul>
+				</span>
+				<form id="rps-form" method="post" action="">
+					<button id="rps-rock" type="button" name="rock">Rock</button>
+					<button id="rps-paper" type="button" name="paper">Paper</button>
+					<button id="rps-scissors" type="button" name="scissors">Scissors</button>
+				</form>
 			</div>
 			<div>
 				<ul>
@@ -42,5 +53,6 @@
 	</div> <!-- end of #wrapper -->
 	<script src="../js/toolBox.js"></script>
 	<script src="../js/script.js"></script>
+	<script src="../js/rps.js"></script>
 </body>
 </html>

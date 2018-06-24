@@ -1,7 +1,7 @@
-/*	toolBox.js
-	22.jun.2018:
+/*	
+	toolBox.js
+	22.jun.2018
 		Written by Ruairi Gann.
-
 		If necessary arguments are not provided,
 		these functions return undefined.
 */
@@ -15,7 +15,7 @@ var t = {
 	*/
 	$: function(id)
 	{
-		'use strict';
+		"use strict";
 		if (id && typeof id != 'undefined') {
 			return document.getElementById(id);
 		}
@@ -30,7 +30,7 @@ var t = {
 	*/
 	setText: function(element, message)
 	{
-		'use strict';
+		"use strict";
 		if (element && message) {
 			if (element.textContent) {
 				element.textContent = message;
@@ -52,7 +52,7 @@ var t = {
 	*/
 	addEvent: function(obj, type, fn)
 	{
-		'use strict';
+		"use strict";
 		if (obj && type && fn) {
 			if (obj.addEventListener) { // W3C
 				obj.addEventListener(type, fn, false);
@@ -70,7 +70,7 @@ var t = {
 	*/
 	removeEvent: function(obj, type, fn)
 	{
-		'use strict';
+		"use strict";
 		if (obj && type && fn) {
 			if (obj.removeEventListener) { // W3C
 				obj.removeEventListener(type, fn, false);
