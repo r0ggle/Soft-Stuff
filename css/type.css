@@ -9,26 +9,11 @@
 	font-family, font-size, line-height, list-style-type, text-decoration,
 */
 
- /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-
-	#wrapper > header > h1 {
-		font-size: 20px;
-	}
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-
-	#wrapper > header > h1 {
-	font-size: 40px;
-	}
-}
+/* Always used */
 
 body {
 /*font-family: 'Heebo', sans-serif;*/
 font-family: 'Sriracha', cursive;
-font-size: 16px;
 }
 p {
 line-height: 1.6;
@@ -38,4 +23,28 @@ text-decoration: none;
 }
 nav > ul {
 list-style-type: none;
+}
+
+ /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+	body {
+	font-size: 12px;
+	}
+
+	#wrapper > header > h1 {
+		font-size: 20px;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+	body{
+	font-size: 16px;
+	}
+
+	#wrapper > header > h1 {
+	font-size: 40px;
+	}
 }
