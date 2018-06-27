@@ -10,20 +10,51 @@
 	border, display, height, grid-template-rows, list-style-position, margin, max-width, outline, padding, position, right, top, width
 */
 
+ /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+	#wrapper {
+	width: 100%;
+	grid-template-rows: 40px auto 40px;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+	#wrapper {
+	grid-template-rows: 80px auto 80px;
+	width: 76%;
+	margin: 0 7% 0 7%;
+	padding: 0 5% 0 5%;
+	
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {...}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}
+
+
+
+
 body {
 margin: 0;
 }
 	#wrapper {
 	position: absolute;
 	display: grid;
-	grid-template-rows: 40px auto 40px;
 	height: 100%;
 	}
 		#wrapper > * {
 		display: flex;
 		}
 			#wrapper > header > h1 {
-			font-size: 20px;
 			margin-top: 0;
 			margin-bottom: 0;
 			}
@@ -41,30 +72,7 @@ height: auto;
 ul {
 padding-left: 20px;
 }
-
-
- /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {...}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-
-	#wrapper {
-	grid-template-rows: 80px auto 80px;
-	width: 76%;
-	margin: 0 7% 0 7%;
-	padding: 0 5% 0 5%;
-	}
-		#wrapper > header > h1 {
-		font-size: 40px;
-		}
+a {
+display: block;
+height: 100%;
 }
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {...}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {...}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {...}
