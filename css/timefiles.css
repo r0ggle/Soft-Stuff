@@ -1,0 +1,16 @@
+#tf-wrapper {
+width: 660px;
+text-align: center;
+}
+	#tf-grid {
+	display: grid;
+	grid-template-columns: 90px 90px 90px 90px 90px 90px 90px;
+	grid-gap: 5px;
+	}
+	#tf-grid > div {
+	background-color: rgba(0,90,10,.2);
+	font-size: 20px;
+	}
+	#tf-nav {
+	padding-top: 40px;
+	}

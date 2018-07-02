@@ -99,13 +99,13 @@
 
 	window.onload = function()
 	{
-		T.addEvent(T.$("rps-rock"), "click", function(e) {
+		T.addEvent(T.$("rps-rock"), "click", function() {
 			handleClick("rock");
 		});
-		T.addEvent(T.$("rps-paper"), "click", function(e) {
+		T.addEvent(T.$("rps-paper"), "click", function() {
 			handleClick("paper");
 		});
-		T.addEvent(T.$("rps-scissors"), "click", function(e) {
+		T.addEvent(T.$("rps-scissors"), "click", function() {
 			handleClick("scissors");
 		});
 	}
