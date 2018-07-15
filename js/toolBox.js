@@ -16,10 +16,38 @@ var T = {
 	$: function(id)
 	{
 		"use strict";
-		if (id && typeof id != 'undefined') {
+		if (id) {
 			return document.getElementById(id);
 		}
 	}, // end of $ function.
+
+	/*
+		$C function acts as a shortcut for document.getElementsByClassName().
+		[0] className = String, CSS class.
+		return = Object, array of HTML elements.
+	*/
+	$C: function(className)
+	{
+		"use strict";
+		if (className) {
+			return document.getElementsByClassName(className);
+		}
+	}, // end of $C function.
+
+	/*
+		toggleProp function toggles the value of an
+		object's property between true and false.
+		[0] obj = Object, contains a boolean property
+		[1] prop = String, name of object's boolean property.
+	*/
+	toggleProp: function(elem, prop)
+	{
+		"use strict";
+		if (elem && prop
+			&& prop in elem) {
+			elem[prop] = (elem[prop] == false) ? true : false;
+		}
+	}, // end of toggleProp function.
 
 
 	/*
@@ -41,11 +69,12 @@ var T = {
 			}
 			return true;
 		}
-	}, // End of setText function.
+	}, // end of setText function.
 
 
 	/*
-		addEvent function is used to add event handlers.
+		addEvent function is used to add event handlers
+
 		[0] obj = Object, reference to HTML element.
 		[1] type = String, the type of event.
 		[2] fn = Object, function to assign to the event.
@@ -60,7 +89,7 @@ var T = {
 				obj.attachEvent('on' + type, fn);
 			}
 		}
-	}, // End of addEvent function.
+	}, // end of addEvent function.
 
 	/*
 		removeEvent function is used to remove event handlers.
@@ -78,6 +107,6 @@ var T = {
 				obj.detachEvent('on' + type, fn);
 			}
 		}
-	} // End of removeEvent function.
+	} // end of removeEvent function.
 
 }; // End of T.

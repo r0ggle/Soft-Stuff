@@ -21,7 +21,7 @@ display: grid;
 }
 #wrapper {
 position: absolute;
-height: 100vh;
+min-height: 100vh;
 }
 	#wrapper > * {
 	display: flex;
@@ -34,6 +34,11 @@ height: auto;
 }
 ul {
 padding-left: 20px;
+margin: 0;
+}
+
+#wires-button {
+position: absolute;
 }
 
  /* Extra small devices (phones, 600px and down) */

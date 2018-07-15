@@ -2,15 +2,24 @@
 width: 660px;
 text-align: center;
 }
-	#tf-grid {
+	#tf-month {
 	display: grid;
 	grid-template-columns: 90px 90px 90px 90px 90px 90px 90px;
 	grid-gap: 5px;
 	}
-	#tf-grid > div {
-	background-color: rgba(0,90,10,.2);
-	font-size: 20px;
+		#tf-month > div {
+		background-color: rgba(0,90,10,.2);
+		font-size: 20px;
+		}
+		#tf-month-nav {
+		padding-top: 40px;
+		}
+
+	#tf-day {
+		width: 660px;
+		height: 220px;
 	}
-	#tf-nav {
-	padding-top: 40px;
-	}
+		.tf-day-i {
+			width: 660px;
+			height: 220px;
+		}
