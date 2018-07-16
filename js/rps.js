@@ -99,6 +99,9 @@
 
 	window.onload = function()
 	{
+		"use strict";
+		T.$("rps-container").style.display = "inline";
+		T.$("js-notice").style.display = "none";
 		T.addEvent(T.$("rps-rock"), "click", function() {
 			handleClick("rock");
 		});
