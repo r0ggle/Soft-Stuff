@@ -10,10 +10,9 @@
 window.onload = function()
 {
 	"use strict";
+	var wiresButton;
 
 	console.log('window loaded: ' + document.title);
-
-	var wiresButton;
 
 	document.body.innerHTML +=
 	"<button id='wires-button'>Wires</button>";
@@ -26,8 +25,9 @@ window.onload = function()
 		//colorRandomly(T.$("wrapper"), "backgroundColor");
 	}
 
+	// disable wires initially
 	T.toggleProp(T.$("wires"), "disabled");
-	wiresButton.onclick = function() {
+	T.addEvent(wiresButton, "click", function() {
 		T.toggleProp(T.$("wires"), "disabled");
-	};
+	});
 };
