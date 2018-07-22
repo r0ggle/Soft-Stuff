@@ -13,10 +13,11 @@
 
 /* Always used */
 
+
 body, p, #wrapper > header > h1 {
 margin: 0;
 }
-#wrapper, #wrapper > main {
+#wrapper, #tf-month, #wrapper > main {
 display: grid;
 }
 #wrapper {
@@ -35,6 +36,19 @@ height: auto;
 ul {
 padding-left: 20px;
 margin: 0;
+}
+
+#tf-wrapper {
+text-align: center;
+}
+#tf-month {
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+	#tf-month-day {
+	height: 30px;
+	}
+#tf-day {
+height: 200px;
 }
 
 #wires-button {
@@ -69,6 +83,9 @@ display: none; /* overwritten by JS */
 		#wrapper > main {
 		grid-template-columns: 3fr 1fr;
 		}
+	#tf-month {
+	grid-gap: 5px;
+	}
 }
 
 /* Medium devices (landscape tablets, 768px and up) */

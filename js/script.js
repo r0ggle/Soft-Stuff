@@ -21,8 +21,6 @@ window.onload = function()
 	// check for timefiles.js function
 	if (typeof colorRandomly !== "undefined") {
 		colorRandomly(T.$C("tf-month-day"), "backgroundColor");
-		colorRandomly(T.$C("tf-day-i"), "backgroundColor");
-		//colorRandomly(T.$("wrapper"), "backgroundColor");
 	}
 
 	// disable wires initially

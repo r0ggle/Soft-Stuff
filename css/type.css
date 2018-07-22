@@ -32,7 +32,7 @@ list-style-type: none;
 	font-size: 12px;
 	}
 
-	#wrapper > header > h1 {
+	#wrapper header h1 {
 		font-size: 20px;
 	}
 }
@@ -40,11 +40,10 @@ list-style-type: none;
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 
-	body{
+	body {
 	font-size: 16px;
 	}
-
-	#wrapper > header > h1 {
+	#wrapper header h1 {
 	font-size: 40px;
 	}
 }

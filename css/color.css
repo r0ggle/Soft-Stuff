@@ -14,3 +14,6 @@ color: rgb(102, 94, 85);
 h1>a {
 color: inherit;
 }
+.tf-month-day, #tf-day { /* default color for no activity */
+background-color: rgba(0,90,10,.2);
+}

@@ -1,25 +1,2 @@
-#tf-wrapper {
-width: 660px;
-text-align: center;
-}
-	#tf-month {
-	display: grid;
-	grid-template-columns: 90px 90px 90px 90px 90px 90px 90px;
-	grid-gap: 5px;
-	}
-		#tf-month > div {
-		background-color: rgba(0,90,10,.2);
-		font-size: 20px;
-		}
-		#tf-month-nav {
-		padding: 10px 0 40px 0;
-		}
 
-	#tf-day {
-		width: 660px;
-		height: 220px;
-	}
-		.tf-day-i {
-			width: 660px;
-			height: 220px;
-		}
+		

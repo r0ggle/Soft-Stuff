@@ -3,22 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<!-- links to fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sriracha">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Heebo:800">
-
+	<!-- links to local stylesheets -->
 	<link rel="stylesheet" href="../css/layout.css">
 	<link rel="stylesheet" href="../css/color.css">
 	<link rel="stylesheet" href="../css/type.css">
 	<link rel="stylesheet" href="../css/wires.css" id="wires">
-	
-	<link rel="stylesheet" type="text/css" href="../css/timefiles.css">
-
 	<title id="head-title">softstuff.uk</title>
 </head>
 <body>
 	<div id="wrapper">
-		
 		<header>
 			<h1><a href="index.html">Time Files</a></h1>
 		</header>
@@ -26,6 +22,22 @@
 			<div>
 				<p>Because time flies...</p>
 				<!-- start of time files area -->
+				<form name="time-form" id="tf-form" action="#" method="post">
+					<fieldset>
+						<legend>Log Activity</legend>
+						<label for="time-start">Start Time</label>
+						<input type="time" name="time-start">
+						<label for="time-end">End Time</label>
+						<input type="time" name="time-end">
+						<select name="time-activity">
+							<option value="languages">Languages</option>
+							<option value="software">Software</option>
+							<option value="Music">Music</option>
+							<option value="Exercise">Exercise</option>
+						</select>
+						<input type="submit" name="Submit" value="Submit">
+					</fieldset>
+				</form>
 				<div id="tf-wrapper">
 					<h3>August</h3>
 					<div id="tf-month">
@@ -62,9 +74,8 @@
 						<div class="tf-month-day">31</div>
 						<div class="tf-month-day">32</div>
 					</div> <!-- end of tf-grid -->
-					<div id="tf-month-nav"> < July September > </div>
+					<div id="tf-month-nav"> &lt; July September &gt; </div>
 					<div id="tf-day">
-						<div class="tf-day-i"></div>
 					</div> <!-- end of tf-day -->
 				</div>
 				<!-- end of time files area -->
