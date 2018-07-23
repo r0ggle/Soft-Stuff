@@ -1,22 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sriracha">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Heebo:800">
-
-	<link rel="stylesheet" href="../css/layout.css">
-	<link rel="stylesheet" href="../css/color.css">
-	<link rel="stylesheet" href="../css/type.css">
-
-	<title id="head-title">softstuff.uk</title>
-</head>
-<body>
+<?php
+	require("../../inc/config.php");
+	include(INC."/header.html");
+?>
 	<div id="wrapper">
 		<header>
-			<h1><a href="index.html">Soft Stuff</a></h1>
+			<h1><a href="index.php">Soft Stuff</a></h1>
 			<!--<nav>
 				<ul>
 					<li>projects</li>
@@ -46,8 +34,8 @@
 			<div id="sidebar">
 				<ul>
 					<li><a href="databending.html">Databending</a></li>
-					<li><a href="timefiles.html">Time Files</a></li>
-					<li><a href="rps.html">Rock, Paper, Scissors</a></li>
+					<li><a href="timefiles.php">Time Files</a></li>
+					<li><a href="rps.php">Rock, Paper, Scissors</a></li>
 				</ul>
 			</div>
 		</main>
