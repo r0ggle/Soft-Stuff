@@ -1,6 +1,32 @@
 <?php
 	require("../../inc/config.php");
 	include(INC."/header.html");
+
+	$mysqli = new mysqli("localhost", "root", "1620", "timefiles");
+	if ($mysqli->connect_errno) {
+	    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+	    exit();
+	}
+
+	$user_id = "1";
+
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+		if ($_POST["time-start"] != ""
+		&& $_POST["time-end"] != ""
+		&& $_POST["time-date"]!= ""
+		&& $_POST["time-activity"] != "") {
+			$time_start = $_POST["time-date"].' '.$_POST["time-start"].':00';
+			$time_end = $_POST["time-date"].' '.$_POST["time-end"].':00';
+			$task_id = $_POST["time-activity"];
+			$q = "INSERT INTO times (task_id, time_start, time_end) VALUES ('$task_id', '$time_start', '$time_end')";
+			if (!$mysqli->query($q)) {
+				echo "Faild to insert row: " . $mysqli->errno;
+				echo $q;
+			}
+		}
+	} else {
+		
+	}
 ?>
 	<div id="wrapper">
 		<header>
@@ -17,11 +43,16 @@
 						<input type="time" name="time-start">
 						<label for="time-end">End Time</label>
 						<input type="time" name="time-end">
+						<input type="date" name="time-date">
 						<select name="time-activity">
-							<option value="languages">Languages</option>
-							<option value="software">Software</option>
-							<option value="Music">Music</option>
-							<option value="Exercise">Exercise</option>
+<?php
+	$r = $mysqli->query("SELECT id, name FROM tasks WHERE user_id=$user_id");
+	while ($row = $r->fetch_assoc()) {
+		echo '<option value="'
+		. $row["id"] . '">' . $row["name"] .
+		'</option>';
+	}
+?>
 						</select>
 						<input type="submit" name="Submit" value="Submit">
 					</fieldset>
