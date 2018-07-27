@@ -94,6 +94,10 @@
 				</form> <!-- end of log-task form -->
 <?php
 	}
+	$r = $mysqli->query("SELECT ta.name, ta.color, DATE_FORMAT(ti.time_start, '%a, %b %c, %H:%i') AS time_start, DATE_FORMAT(ti.time_end, '%a, %b %c, %H:%i') AS time_end FROM tasks AS ta INNER JOIN times as ti ON ta.id=ti.task_id WHERE ta.user_id='$user_id' ORDER BY ti.time_start DESC");
+	while ($row = $r->fetch_assoc()) {
+		echo '<span class="t" style="background-color:#'.$row['color'].'">'.$row['time_start'].' - '.$row['time_end'].': '.$row['name'].'</span>';
+	}
 ?>
 				<div id="tf-wrapper">
 					<h3>August</h3>
