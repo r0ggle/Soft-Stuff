@@ -50,7 +50,7 @@
 				<p>Because time flies...</p>
 				<!-- start of time files area -->
 <?php
-	$r = $mysqli->query("SELECT ti.id, ti.time_start, ta.name FROM times as ti LEFT JOIN tasks as ta ON ti.task_id = ta.id WHERE ta.user_id='$user_id' AND ti.time_end = '0000-00-00 00:00:00';");
+	$r = $mysqli->query("SELECT ti.id, ti.time_start, ta.name FROM times AS ti LEFT JOIN tasks AS ta ON ti.task_id = ta.id WHERE ta.user_id='$user_id' AND ti.time_end = '0000-00-00 00:00:00';");
 
 	if (mysqli_num_rows($r) != 0) {
 ?>
@@ -93,16 +93,17 @@
 					</fieldset>
 				</form> <!-- end of log-task form -->
 <?php
-	}
-	$r = $mysqli->query("SELECT ta.name, ta.color, DATE_FORMAT(ti.time_start, '%a, %b %c, %H:%i') AS time_start, DATE_FORMAT(ti.time_end, '%a, %b %c, %H:%i') AS time_end FROM tasks AS ta INNER JOIN times as ti ON ta.id=ti.task_id WHERE ta.user_id='$user_id' ORDER BY ti.time_start DESC");
+	} // list last 20 time entries, latest first
+	$r = $mysqli->query("SELECT ta.name, ta.color, DATE_FORMAT(ti.time_start, '%a, %b %c, %H:%i') AS time_start, DATE_FORMAT(ti.time_end, '%a, %b %c, %H:%i') AS time_end FROM tasks AS ta INNER JOIN times as ti ON ta.id=ti.task_id WHERE ta.user_id='$user_id' ORDER BY ti.time_start DESC LIMIT 16");
 	while ($row = $r->fetch_assoc()) {
 		echo '<span class="t" style="background-color:#'.$row['color'].'">'.$row['time_start'].' - '.$row['time_end'].': '.$row['name'].'</span>';
 	}
 ?>
 				<div id="tf-wrapper">
-					<h3>August</h3>
+					<h3><?php echo date("F"); ?></h3>
 					<div id="tf-month">
 <?php
+	// print month grid
 	$r = $mysqli->query("SELECT DAY(LAST_DAY(CURRENT_TIMESTAMP()))");
 		$row = $r->fetch_array(MYSQLI_NUM);
 		$days_in_month = $row[0];
@@ -111,7 +112,7 @@
 		}
 ?>
 					</div> <!-- end of tf-grid -->
-					<div id="tf-month-nav"> &lt; July September &gt; </div>
+					<div id="tf-month-nav"> &lt; &gt; </div>
 					<div id="tf-day">
 					</div> <!-- end of tf-day -->
 				</div>
@@ -120,7 +121,7 @@
 			<div id="sidebar">
 			</div>
 		</main>
-		<footer>Ruairi Gann &copy; 2018</footer>
+		<footer>&copy; 2018 - <?php echo date('Y'); ?></footer>
 	</div> <!-- end of #wrapper -->
 	<script src="../js/toolBox.js"></script>
 	<script src="../js/timefiles.js"></script>
