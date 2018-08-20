@@ -36,7 +36,7 @@
 			$ct_id = $_POST['ct-id'];
 
 			// complete the incomplete task:
-			$r = $mysqli->query("UPDATE times SET time_end=CURRENT_TIMESTAMP() WHERE id=$ct_id");
+			$r = $mysqli->query("UPDATE times SET time_end=UTC_TIMESTAMP() WHERE id=$ct_id");
 		}
 		
 	}
@@ -48,6 +48,10 @@
 		<main>
 			<div>
 				<p>Because time flies...</p>
+				<div class="show-button">
+					<button>About</button>
+					<p>When you are about to start doing something, select that task from your list and hit submit.<br>If you want to add an entry for something you have already done, simply enter the start and end times before submitting the form.</p>
+				</div>
 				<!-- start of time files area -->
 <?php
 	$r = $mysqli->query("SELECT ti.id, ti.time_start, ta.name FROM times AS ti LEFT JOIN tasks AS ta ON ti.task_id = ta.id WHERE ta.user_id='$user_id' AND ti.time_end = '0000-00-00 00:00:00';");

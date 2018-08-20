@@ -10,6 +10,8 @@
 window.onload = function()
 {
 	"use strict";
+	var sb = T.$C("show-button");
+	var sbb; // show-button button
 	var wiresButton;
 
 	console.log('window loaded: ' + document.title);
@@ -28,4 +30,24 @@ window.onload = function()
 	T.addEvent(wiresButton, "click", function() {
 		T.toggleProp(T.$("wires"), "disabled");
 	});
+
+	// hide expandable elements and show their buttons
+	for (var i = 0, l = sb.length; i < l; i++) { // each div
+		sbb = sb[i].querySelector("button");
+		for (var n = 0, e = sb[i].children.length; n < e; n++) { // each child
+			sb[i].children[n].style.display = "none";
+		}
+		sbb.style.display = "block";
+
+		T.addEvent(sbb, "click", function() {
+			for (var n = 0, e = sbb.parentNode.children.length; n < e; n++) { // each child
+				if (sbb.parentNode.children[n].nodeName != "BUTTON") {
+					sbb.parentNode.children[n].style.display =
+					(sbb.parentNode.children[n].style.display == "none")
+					? "inline" : "none";
+				}
+			}
+		});
+	}
+	
 };
