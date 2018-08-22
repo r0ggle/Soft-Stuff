@@ -16,6 +16,7 @@
 /* temp */
 .t {
 display: block;
+font-family: monospace;
 }
 
 body, p, #wrapper > header > h1 {
