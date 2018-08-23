@@ -17,6 +17,7 @@
 .t {
 display: block;
 font-family: monospace;
+color: black;
 }
 
 body, p, #wrapper > header > h1 {

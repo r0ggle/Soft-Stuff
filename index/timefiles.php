@@ -7,38 +7,29 @@
 	$mysql_time = date("Y-m-d H:i:s");
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
 		if (isset($_POST['la-submit'])) { // log new task
-
 			if ($_POST['la-time-date'] == '') {
 				$la_date = date("Y-m-d");
 			} else {
 				$la_date = date("Y-m-d", $_POST['la-time-date']);
 			}
-
 			$time_start = ($_POST["la-time-start"] == "" ?
 			$mysql_time : ($la_date.' '.$_POST["la-time-start"].':00'));
-
 			$time_end = ($_POST["la-time-end"] == "" ?
 			"0000-00-00 00:00:00" : ($la_date.' '.$_POST["la-time-end"].':00'));
-		
 			if ($_POST['la-time-task'] == '') exit();
 			$task_id = $_POST["la-time-task"];
-
 			$q = "INSERT INTO times (task_id, time_start, time_end) VALUES ('$task_id', '$time_start', '$time_end')";
 			if (!$mysqli->query($q)) {
 				echo "Faild to insert row: " . $mysqli->errno;
 				echo $q;
 			}
 		} else if (isset($_POST['ct-submit'])) { // complete task
-
 			if (!$_POST['ct-id']) exit();
 			$ct_id = $_POST['ct-id'];
-
 			// complete the incomplete task:
 			$r = $mysqli->query("UPDATE times SET time_end=UTC_TIMESTAMP() WHERE id=$ct_id");
 		}
-		
 	}
 ?>
 	<div id="wrapper">
@@ -55,7 +46,6 @@
 				<!-- start of time files area -->
 <?php
 	$r = $mysqli->query("SELECT ti.id, ti.time_start, ta.name FROM times AS ti LEFT JOIN tasks AS ta ON ti.task_id = ta.id WHERE ta.user_id='$user_id' AND ti.time_end = '0000-00-00 00:00:00';");
-
 	if (mysqli_num_rows($r) != 0) {
 ?>
 				<form name="complete-task" action="#" method="post">
@@ -81,7 +71,7 @@
 						<label for="la-time-start">Start Time</label>
 						<input type="time" name="la-time-start">
 						<label for="la-time-end">End Time</label>
-						<input type="time" name="la-time-end">
+						<input type="time" name="la-time-end"> Please enter times in UTC.
 						<input type="date" name="la-time-date">
 						<select name="la-time-task">
 	<?php
