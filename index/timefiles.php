@@ -1,4 +1,7 @@
 <?php
+
+	$page = 'timefiles';
+
 	require("../../inc/config.php");
 	include(INC."/header.html");
 	require(INC."/mysqli.php");

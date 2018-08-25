@@ -14,6 +14,7 @@
 				<ul>
 					<li><a href="databending.html">Databending</a></li>
 					<li><a href="timefiles.php">Time Files</a></li>
+					<li><a href="frettrain.php">Fret Train</a></li>
 					<li><a href="rps.php">Rock, Paper, Scissors</a></li>
 				</ul>
 			</div>

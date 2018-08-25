@@ -19,6 +19,13 @@ display: block;
 font-family: monospace;
 color: black;
 }
+form span {
+float: left;
+margin: 4px;
+padding: 4px;
+outline: 1px solid black;
+font-family: monospace;
+}
 
 body, p, #wrapper > header > h1 {
 margin: 0;

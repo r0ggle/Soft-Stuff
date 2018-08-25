@@ -38,13 +38,14 @@ window.onload = function()
 		}
 		sbb = sb[i].querySelector("button");
 		sbb.style.display = "block";
-		T.addEvent(sbb, "click", function() {
+		T.addEvent(sbb, "click", function(event) {
 			for (var n = 0, e = sbb.parentNode.children.length; n < e; n++) { // each child
 				if (sbb.parentNode.children[n].nodeName != "BUTTON") {
 					sbb.parentNode.children[n].style.display =
 					(sbb.parentNode.children[n].style.display == "none") ? "inline" : "none";
 				}
 			}
+			event.preventDefault();
 		});
 	}
 };
