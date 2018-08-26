@@ -55,7 +55,7 @@
 			shuffle($note_data);
 			$results[$note] = $note_data;
 		}
-		echo '<pre>' . var_export($results, true) . '</pre>';
+		//echo '<pre>' . var_export($results, true) . '</pre>';
 	}
 ?>
 
@@ -223,6 +223,36 @@
 		<footer>Ruairi Gann &copy; 2018</footer>
 	</div> <!-- end of #wrapper -->
 	<script src="../js/toolBox.js"></script>
+<?php if (isset($results)) { ?>
+	<script type="text/javascript">
+		var ftResults = JSON.parse('<?php echo json_encode($results) ?>');
+
+		function handleFretTrain(results, interval)
+		{
+			"use strict";
+			var list = [];
+			var index = 0;
+			interval = interval || 5000;
+			T.setText(T.$('output'), 'Ready?');
+			// convert results into simple array
+			for (var key in results) {
+				results[key].forEach(function(fret) {
+					list.push(key + ' fret ' + fret);
+				});
+			}
+			var interval = setInterval(function() {
+				T.setText(T.$('output'), list[index]);
+				index++;
+				if (index >= list.length) {
+					T.setText(T.$('output'), ' ');
+				clearInterval(interval);
+				}
+			}, interval);
+		} // end of handleFretTrain function
+
+		handleFretTrain(ftResults, 4000);
+	</script>
+<?php } ?>
 	<script src="../js/script.js"></script>
 </body>
 </html>
