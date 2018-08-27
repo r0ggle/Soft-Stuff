@@ -8,6 +8,24 @@
 
 	if (isset($_GET['ft-form-input'])) { // form was submitted
 
+		if (isset($_GET['speed'])) {
+			$speed = $_GET['speed'];
+			if (is_numeric($speed) && ($speed > 0 && $speed <= 30)) {
+				$speed = floor($speed);
+			} else {
+				$speed = 5;
+			}
+		} else {
+			$speed = 5;
+		}
+		$speed = ($speed * 1000);
+
+		if (isset($_GET['shuffle']) && $_GET['shuffle'] === 'on') {
+			$shuffle = true;
+		} else {
+			$shuffle = false;
+		}
+
 		$notes_array = [];
 		$strings_array = [];
 		$frets_array = [];
@@ -29,8 +47,8 @@
 		if (empty($strings_array)) { // add all strings
 			array_push($strings_array, 'strE2','strB','strG','strD','strA','strE');
 		}
-		if (empty($frets_array)) { // add all frets up to 22
-			array_push($frets_array, 'fr0','fr1','fr2','fr3','fr4','fr5','fr6','fr7','fr8','fr9','fr10','fr11','fr12','fr13','fr14','fr15','fr16','fr17','fr18','fr19','fr20','fr21','fr22');
+		if (empty($frets_array)) { // add all frets up to 12
+			array_push($frets_array, 'fr0','fr1','fr2','fr3','fr4','fr5','fr6','fr7','fr8','fr9','fr10','fr11','fr12');
 		}
 
 
@@ -39,22 +57,32 @@
 		foreach ($notes_array as $k => $v) {
 			$note = substr($v, 1);
 			$note_data = [];
+			$strings = '';
+			$frets = '';
 
-			$strings = ''; // concat strings to make OR conditional
+			// concat strings to make OR conditional
 			foreach ($strings_array as $k1 => $v1) {
 				$strings .= substr($v1, 3);
 				$strings .= "='$note' OR ";
 			}
 			$strings = substr($strings, 0, -4);
 
-			$q = "SELECT no FROM frets WHERE " . $strings;
+			// concat frets to make second OR contitional
+			foreach ($frets_array as $k1 => $v1) {
+				$frets .= "no='";
+				$frets .= substr($v1, 2);
+				$frets .= "' OR ";
+			}
+			$frets = substr($frets, 0, -4);
+
+			$q = "SELECT no FROM frets WHERE ($strings) AND ($frets)";
 			$r = $mysqli->query($q);
 			while ($row = $r->fetch_assoc()) {
 				$note_data[] = $row['no'];
 			}
-			shuffle($note_data);
+			if ($shuffle) shuffle($note_data);
 			$results[$note] = $note_data;
-		}
+		} // end of main foreach loop
 		//echo '<pre>' . var_export($results, true) . '</pre>';
 	}
 ?>
@@ -66,6 +94,12 @@
 		<main>
 			<div>
 				<p>Learn the notes on the guitar!</p>
+				<div class="show-button">
+					<button>About</button>
+					<p>Use this program to practice finding notes on the guitar fretboard.<br><br><br>Leave the form unchecked for default settings: all strings, all natural notes (no sharps or flats) and all frets from 0 (open string) to 12. If shuffle is on, the frettings of each note will be random, however the note order will stay the same. This makes it easier to hear if you've hit the right note, because all of the same notes will still be grouped together.</p><br><br>
+					<p>If you are not very confident in your ability to quickly find notes on the fretboard, I suggest starting by just checking one string (the low E), and memorizing the location of all the natural notes visually on your guitar. Then, once you've done the same for the A string, try checking both strings, keeping the speed slow (high?), and see how you do. Remember to be accurate, don't play a note if you don't know what it is!</p>
+
+				</div>
 				<form name="ft-form" action="" method="get">
 					<input type="hidden" name="ft-form-input">
 					<fieldset>
@@ -94,41 +128,41 @@
 							<label for="nC">C</label>
 							<input type="checkbox" name="nC" 
 <?php if (isset($_GET['nC'])) echo 'checked'; ?>><br>
+							<label for="nC#">C#</label>
+							<input type="checkbox" name="nC#" 
+<?php if (isset($_GET['nC#'])) echo 'checked'; ?>><br>
 							<label for="nD">D</label>
 							<input type="checkbox" name="nD" 
 <?php if (isset($_GET['nD'])) echo 'checked'; ?>><br>
+							<label for="nD#">D#</label>
+							<input type="checkbox" name="nD#" 
+<?php if (isset($_GET['nD#'])) echo 'checked'; ?>><br>
 							<label for="nE">E</label>
 							<input type="checkbox" name="nE" 
 <?php if (isset($_GET['nE'])) echo 'checked'; ?>><br>
 							<label for="nF">F</label>
 							<input type="checkbox" name="nF" 
 <?php if (isset($_GET['nF'])) echo 'checked'; ?>><br>
-							<label for="nG">G</label>
-							<input type="checkbox" name="nG" 
-<?php if (isset($_GET['nG'])) echo 'checked'; ?>><br>
-							<label for="nA">A</label>
-							<input type="checkbox" name="nA" 
-<?php if (isset($_GET['nA'])) echo 'checked'; ?>><br>
-							<label for="nB">B</label>
-							<input type="checkbox" name="nB" 
-<?php if (isset($_GET['nB'])) echo 'checked'; ?>><br>
-							<label for="nC#">C#</label>
-							<input type="checkbox" name="nC#" 
-<?php if (isset($_GET['nC#'])) echo 'checked'; ?>><br>
-							<label for="nD#">D#</label>
-							<input type="checkbox" name="nD#" 
-<?php if (isset($_GET['nD#'])) echo 'checked'; ?>><br>
 							<label for="nF#">F#</label>
 							<input type="checkbox" name="nF#" 
 <?php if (isset($_GET['dF#'])) echo 'checked'; ?>><br>
+							<label for="nG">G</label>
+							<input type="checkbox" name="nG" 
+<?php if (isset($_GET['nG'])) echo 'checked'; ?>><br>
 							<label for="nG#">G#</label>
 							<input type="checkbox" name="nG#" 
 <?php if (isset($_GET['nG#'])) echo 'checked'; ?>><br>
+							<label for="nA">A</label>
+							<input type="checkbox" name="nA" 
+<?php if (isset($_GET['nA'])) echo 'checked'; ?>><br>
 							<label for="nA#">A#</label>
 							<input type="checkbox" name="nA#" 
 <?php if (isset($_GET['nA#'])) echo 'checked'; ?>><br>
+							<label for="nB">B</label>
+							<input type="checkbox" name="nB" 
+<?php if (isset($_GET['nB'])) echo 'checked'; ?>><br>
 						</span>
-						<!--<span>Frets<br>
+						<span>Frets<br>
 							<label for="fr0">0</label>
 							<input type="checkbox" name="fr0" 
 <?php if (isset($_GET['fr0'])) echo 'checked'; ?>><br>
@@ -204,7 +238,13 @@
 							<label for="fr24">24</label>
 							<input type="checkbox" name="fr24" 
 <?php if (isset($_GET['fr24'])) echo 'checked'; ?>><br>
-						</span>-->
+						</span>
+						<label for="speed">Speed (in seconds)</label>
+						<input type="number" name="speed" value=
+<?php echo '"'; if (isset($speed)) { echo ($speed / 1000) . '"'; } else { echo 4; } ?>"><br>
+						<label for="shuffle">Shuffle</label>
+						<input type="checkbox" name="shuffle" 
+<?php if (!isset($shuffle) || $shuffle == true) echo "checked"; ?>><br>
 						<input type="submit" name="submit" value="Start">
 					</fieldset>
 				</form>
@@ -226,6 +266,16 @@
 <?php if (isset($results)) { ?>
 	<script type="text/javascript">
 		var ftResults = JSON.parse('<?php echo json_encode($results) ?>');
+		var speed = <?php echo $speed; ?>;
+		var interval;
+
+		function handleOutputClick()
+		{
+			"use strict";
+			T.C('in handleOutputClick');
+			T.$('output').style.display = 'none';
+			T.removeEvent(this, 'click', handleOutputClick);
+		}
 
 		function handleFretTrain(results, interval)
 		{
@@ -233,6 +283,7 @@
 			var list = [];
 			var index = 0;
 			interval = interval || 5000;
+			T.$('output').style.display = 'inline';
 			T.setText(T.$('output'), 'Ready?');
 			// convert results into simple array
 			for (var key in results) {
@@ -240,17 +291,18 @@
 					list.push(key + ' fret ' + fret);
 				});
 			}
-			var interval = setInterval(function() {
+			interval = setInterval(function() {
 				T.setText(T.$('output'), list[index]);
 				index++;
-				if (index >= list.length) {
-					T.setText(T.$('output'), ' ');
+				if (index > list.length) {
+					T.$('output').style.display = 'none';
 				clearInterval(interval);
 				}
 			}, interval);
+			T.addEvent(document, 'click', handleOutputClick);
 		} // end of handleFretTrain function
 
-		handleFretTrain(ftResults, 4000);
+		handleFretTrain(ftResults, speed);
 	</script>
 <?php } ?>
 	<script src="../js/script.js"></script>

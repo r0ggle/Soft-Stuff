@@ -19,12 +19,27 @@ display: block;
 font-family: monospace;
 color: black;
 }
+.show-button {
+padding: 8px 20% 8px 10px;
+}
+	.show-button button {
+	margin-bottom: 8px;
+	}
 form span {
 float: left;
 margin: 4px;
 padding: 4px;
 outline: 1px solid black;
 font-family: monospace;
+}
+#output {
+position: absolute;
+width: 100vw;
+height: 60vh;
+padding-top: 40vh;
+left: 0;
+top: 0;
+display: none;
 }
 
 body, p, #wrapper > header > h1 {
@@ -34,7 +49,6 @@ margin: 0;
 display: grid;
 }
 #wrapper {
-position: absolute;
 min-height: 100vh;
 }
 	#wrapper > * {
@@ -65,7 +79,8 @@ height: 200px;
 }
 
 #wires-button {
-position: absolute;
+width: 0;
+height: 0;
 }
 
 #rps-container {

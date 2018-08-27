@@ -6,7 +6,7 @@
 	and rendering text within elements.
 
 	Properties:
-	font-family, font-size, line-height, list-style-type, text-decoration,
+	font-family, font-size, line-height, list-style-type, text-decoration, text-align
 */
 
 /* Always used */
@@ -15,7 +15,7 @@ body {
 /*font-family: 'Heebo', sans-serif;*/
 font-family: 'Sriracha', sans-serif;
 }
-p {
+main>div>p {
 line-height: 1.6;
 }
 h1 > a {
@@ -26,10 +26,15 @@ list-style-type: none;
 }
 
 #output {
-font-size: 24px;
-color: red;
+font-size: 50px;
 font-family: sans-serif;
 font-weight: bold;
+text-align: center;
+}
+.show-button {
+font-style: italic;
+font-size: 14px;
+font-family: monospace;
 }
 
  /* Extra small devices (phones, 600px and down) */
