@@ -9,6 +9,15 @@
 var T = {
 
 	/*
+		C function is a shortcut for console.log
+		[0] exp = expression to be logged to the console.
+	*/
+	C: function(exp)
+	{
+		console.log(exp);
+	}, // end of C function
+
+	/*
 		$ function acts as a shortcut for document.getElementById().
 		[0] id = String, id of HTML element.
 		return = Object, reference to HTML element.
